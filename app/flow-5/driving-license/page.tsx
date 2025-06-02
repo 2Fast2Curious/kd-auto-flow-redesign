@@ -1,0 +1,125 @@
+"use client"
+import Image from "next/image"
+import { Phone, Shield, Star, Award } from "lucide-react"
+import { useRouter } from "next/navigation"
+
+export default function Flow5DrivingLicensePage() {
+  const router = useRouter()
+
+  const handleSelection = (hasLicense: string) => {
+    router.push("/flow-5/vehicle-year")
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+      {/* Header */}
+      <header className="bg-white py-4 px-4 shadow-sm border-b border-gray-200">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="relative h-10 w-40">
+            <Image
+              src="/images/logo.png"
+              alt="QualifyAuto.com Logo"
+              fill
+              className="object-contain object-left"
+              priority
+            />
+          </div>
+          <div className="text-right">
+            <a href="tel:18445541262" className="text-blue-600 font-bold text-lg flex items-center justify-end gap-1">
+              <Phone size={16} className="text-green-500" />
+              1-844-554-1262
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {/* Trust Bar */}
+      <div className="bg-white py-2 border-b border-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center items-center gap-6 text-xs text-gray-600">
+            <div className="flex items-center gap-1">
+              <Shield className="w-3 h-3 text-green-500" />
+              <span>Secure</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Star className="w-3 h-3 text-yellow-500" />
+              <span>4.8/5 Rating</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <main className="container mx-auto px-4 py-8">
+        <div className="max-w-lg mx-auto">
+          {/* Progress */}
+          <div className="mb-6">
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-sm text-gray-600">Progress</span>
+              <span className="text-sm font-medium text-blue-600">37.5%</span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2">
+              <div
+                className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                style={{ width: "37.5%" }}
+              ></div>
+            </div>
+          </div>
+
+          {/* Main Card */}
+          <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-4 text-white text-center">
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <Award className="w-5 h-5" />
+                <h1 className="text-xl font-bold">License Check</h1>
+              </div>
+              <p className="text-blue-100 text-sm">Valid license = Better rates</p>
+            </div>
+
+            {/* Content */}
+            <div className="p-6">
+              <div className="text-center mb-6">
+                <h2 className="text-lg font-bold text-gray-900 mb-3">Do you have a valid driving license?</h2>
+              </div>
+
+              <div className="space-y-3">
+                <button
+                  onClick={() => handleSelection("yes")}
+                  className="w-full bg-green-500 hover:bg-green-600 text-white py-4 px-6 rounded-lg text-center font-semibold shadow-md active:scale-95 transition-all duration-150"
+                >
+                  ✓ YES - I have a license
+                </button>
+
+                <button
+                  onClick={() => handleSelection("no")}
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white py-4 px-6 rounded-lg text-center font-semibold shadow-md active:scale-95 transition-all duration-150"
+                >
+                  ✗ NO - I don't have one
+                </button>
+              </div>
+
+              {/* Benefits */}
+              <div className="mt-6 pt-4 border-t border-gray-100">
+                <div className="grid grid-cols-3 gap-3 text-center text-sm">
+                  <div>
+                    <div className="text-lg font-bold text-green-600">25%</div>
+                    <div className="text-gray-600">Discount</div>
+                  </div>
+                  <div>
+                    <div className="text-lg font-bold text-blue-600">Safe</div>
+                    <div className="text-gray-600">Driver</div>
+                  </div>
+                  <div>
+                    <div className="text-lg font-bold text-purple-600">Fast</div>
+                    <div className="text-gray-600">Approval</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  )
+}
